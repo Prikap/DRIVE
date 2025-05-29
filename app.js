@@ -1,16 +1,20 @@
 const express = require('express');
-const ejs = require('ejs');
+const userRouter = require('./routes/user.routes');
+
 const app = express();
 
-app.set("view engine", ejs);
+app.set('view engine', 'ejs');
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+app.use('/user', userRouter);
 
 app.listen(3000, ()=> {
-    console.log("Server started on port 3000");
+    console.log('Server is running on port 3000');
 })
 
-
+/*
 app.post("/register", async (req, res) => {
     console.log(req.body);
     const data = await fetchDataFromAnotherService();
@@ -40,4 +44,4 @@ async function fetchDataFromAnotherService() {
         success: data,
     };
 }
-
+*/
