@@ -12,7 +12,7 @@ router.post('/register', body('username').notEmpty().withMessage('Name is requir
                         body('email').trim().isEmail().withMessage('Invalid email format'),
                         body('password').isLength({min: 8}).withMessage('Password must be at least 8 characters long'),
     async (req, res)=> {
-        const errors =validationResult(req);
+        const errors = validationResult(req);
 
         if(!errors.isEmpty()) {
             return res.status(400).json({
